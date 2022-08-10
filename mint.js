@@ -43,14 +43,14 @@ document.getElementById('mint-button').addEventListener('click', function(){
         document.querySelector('#mint-button').innerText = "Minting...";
         window.minting = true
 
-        document.querySelector('#mint-button').style.display = 'block'
+        document.querySelector('#score-nft-container').style.display = 'block'
         setTimeout(() => {
         html2canvas(document.querySelector('#score-nft-container'), {
             scale: 5,
             width: 300,
             height: 300
         }).then(canvas => {
-            document.querySelector('#mint-button').style.display = 'none'
+            // document.querySelector('#score-nft-container').style.display = 'none'
 
             canvas.toBlob(function(blob){
                 uploadScoreToStorage(blob, Date.now().toString(), async (imageUrl) => {
