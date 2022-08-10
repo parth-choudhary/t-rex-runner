@@ -201,3 +201,6 @@ button{
   pointer-events: auto;
 
 }
+#main-frame-error {
+    display: none;
+}

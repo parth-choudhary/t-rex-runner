@@ -2746,9 +2746,18 @@
 })();
 
 
+
 function onDocumentLoad() {
     let runner = new Runner('.interstitial-wrapper');
     window.runner = runner;
 }
 
-document.addEventListener('DOMContentLoaded', onDocumentLoad);
+
+document.addEventListener("show_two", function(e) {
+    console.log(e); // Prints "Example of an event"\
+    onDocumentLoad();
+    //document.addEventListener('DOMContentLoaded', onDocumentLoad);
+    
+});
+
+//document.addEventListener('DOMContentLoaded', onDocumentLoad);

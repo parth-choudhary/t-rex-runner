@@ -140,7 +140,9 @@ function checkHighScore() {
             el.style.display = 'none';
         });
         document.querySelector('#screen_two').style.display = 'flex';
-  
+        document.querySelector('#main-frame-error').style.display = 'block';
+        var event = new CustomEvent("show_two", {});
+        document.dispatchEvent(event);
     }
 
     function show_three() {
