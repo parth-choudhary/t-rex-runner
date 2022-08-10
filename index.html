@@ -12,9 +12,15 @@
 
 <body id="t" class="offline">
     <div id="messageBox" class="sendmessage">
-         <h1 style="text-align: center;font-family: 'Open Sans', sans-serif;">Press Space to start</h1>
-         <div class="niokbutton" onclick="okbuttonsend()"></div>
+         <!-- <h1 style="text-align: center;font-family: 'Open Sans', sans-serif;">Press Space to start</h1> -->
+         <!-- <div class="niokbutton" onclick="okbuttonsend()"></div> -->
+         <button class="start-game" onclick="startGame()">Start Game</button>
     </div>
+    <div id="mintBox" class="sendmessage">
+        <!-- <h1 style="text-align: center;font-family: 'Open Sans', sans-serif;">Press Space to start</h1> -->
+        <!-- <div class="niokbutton" onclick="okbuttonsend()"></div> -->
+        <button id="mint-button" class="mint-button" onclick="mintNFT()">Mint NFT</button>
+   </div>
     <div id="main-frame-error" class="interstitial-wrapper">
         <div id="main-content">
             <div class="icon icon-offline" alt=""></div>
@@ -33,12 +39,47 @@
 
 <script>
     document.onkeydown = function(evt) {
+    console.log('space pres');
     evt = evt || window.event;
-    if (evt.keyCode == 32) {
-        var box = document.getElementById("messageBox");
-        box.style.visibility="hidden";
-    }
+    // if (evt.keyCode == 32) {
+    //     var box = document.getElementById("messageBox");
+    //     box.style.visibility="hidden";
+    // }
 };
 </script>
-    
+<script>
+    function startGame() {
+        var box = document.getElementById("messageBox");
+        box.style.visibility="hidden";
+        window.runner.playingIntro = true;
+        window.runner.playIntro();
+    }
+
+    function mintNFT() {
+        // Add code to mint NFT
+    }
+
+    function checkHighScore() {
+        setTimeout(() => {
+            console.log('herere', window.runner.highestScore)
+            if(window.runner.highestScore > 0) {
+                var box = document.getElementById("mintBox");
+                box.style.display="block";
+                var mb = document.getElementById("mint-button");
+                mb.style.innerText="Mint NFT with " + window.runner.distanceMeter.setHighScore(window.runner.highestScore) + " score";
+                mb.style.textContent="Mint NFT with " + window.runner.distanceMeter.setHighScore(window.runner.highestScore) + " score";
+                document.querySelector('#mint-button').innerText = "Mint NFT with " + Math.round(window.runner.highestScore * 0.025) + " score";
+                checkHighScore();
+            } else {
+                checkHighScore();
+            }
+        }, 1000)
+    }
+    checkHighScore();
+</script>
+    <style>
+        #mintBox {
+            display: none;
+        }
+    </style>
 </html>

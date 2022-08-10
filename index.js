@@ -502,6 +502,7 @@
          * Update the game status to started.
          */
         startGame: function () {
+            console.log('start')
             this.setArcadeMode();
             this.runningTime = 0;
             this.playingIntro = false;
@@ -546,9 +547,9 @@
                 var hasObstacles = this.runningTime > this.config.CLEAR_TIME;
 
                 // First jump triggers the intro.
-                if (this.tRex.jumpCount == 1 && !this.playingIntro) {
-                    this.playIntro();
-                }
+                // if (this.tRex.jumpCount == 1 && !this.playingIntro) {
+                //     this.playIntro();
+                // }
 
                 // The horizon doesn't move until the intro is over.
                 if (this.playingIntro) {
@@ -2746,7 +2747,8 @@
 
 
 function onDocumentLoad() {
-    new Runner('.interstitial-wrapper');
+    let runner = new Runner('.interstitial-wrapper');
+    window.runner = runner;
 }
 
 document.addEventListener('DOMContentLoaded', onDocumentLoad);
