@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
-    <title >chrome easter egg: t-rex runner</title>
+    <title>Croak.xyz | Let's Fucking Croak</title>
     <link rel="stylesheet" href="index.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
@@ -56,24 +56,26 @@
       </div>
     </div>
     
-        <div id="screen_two" class="screen">
-            <button class="start-game" onclick="startGame()">Start Game</button>
-        </div>
-    
-        <div id="screen_three" class="screen" style="flex-direction: column; margin-top: 40px;">
-            <!-- Enter NFT UI code here NAMAN -->
-            <button style="background-color: #5bd21c; padding-left: 20px; 
-            padding-right: 20px; padding-top: 5px; padding-bottom: 5px; border-radius: 12px;
-            font-family: 'VT323';font-weight: 400; font-size: 30px; color: white; margin-top: 20px;" id="mint-button" class="mint-button" >Mint NFT</button>
+    <div id="screen_two" class="screen">
+        <button style="background-color: black; padding-left: 20px; 
+        padding-right: 20px; padding-top: 5px; padding-bottom: 5px; border-radius: 12px;
+        font-family: 'VT323';font-weight: 400; font-size: 30px; color: white; margin-top: 20px;" class="start-game" onclick="startGame()">Start Game</button>
+    </div>
 
-            <div id="score-nft-container" style="display: none; text-align: center; display: none; margin-top: 20px;">
-                <img src="assets/nft_bg.png" width="300" height="300">
-                <div style="position: relative; text-align: center; bottom: 120px;">
-                    <p id='nft-score' style="color: white; font-family: 'VT323';font-weight: 400; font-size: 50px; line-height: 1px; text-align: center;">350</p>
-                    <p style="color: white; font-family: 'VT323';font-weight: 400; font-size: 20px;  line-height: 1px; margin-top: -20px;text-align: center;">YOUR SCORE</p>
-                </div>
-           </div>
+    <div id="screen_three" class="screen" style="flex-direction: column; margin-top: 40px;">
+        <!-- Enter NFT UI code here NAMAN -->
+        <button style="background-color: #5bd21c; padding-left: 20px; 
+        padding-right: 20px; padding-top: 5px; padding-bottom: 5px; border-radius: 12px;
+        font-family: 'VT323';font-weight: 400; font-size: 30px; color: white; margin-top: 20px;" id="mint-button" class="mint-button" >Mint NFT</button>
+
+        <div id="score-nft-container" style="display: none; text-align: center; display: none; margin-top: 20px;">
+            <img src="assets/nft_bg.png" width="300" height="300">
+            <div style="position: relative; text-align: center; bottom: 120px;">
+                <p id='nft-score' style="color: white; font-family: 'VT323';font-weight: 400; font-size: 50px; line-height: 1px; text-align: center;">350</p>
+                <p style="color: white; font-family: 'VT323';font-weight: 400; font-size: 20px;  line-height: 1px; margin-top: -20px;text-align: center;">YOUR SCORE</p>
+            </div>
         </div>
+    </div>
 </body>
 
 <script>
@@ -92,15 +94,16 @@
 
 function startGame() {
         var box = document.getElementById("messageBox");
-        box.style.visibility="hidden";
-        window.runner.playingIntro = true;
+        box.style.display="none";
+        // window.runner.playingIntro = true;
         window.runner.playIntro();
+        window.runner.update();
         hide_all_screen();
+        
     }
 
 function checkHighScore() {
         setTimeout(() => {
-            console.log('herere', window.runner.highestScore)
             if(window.runner.highestScore > 0) {
                 var box = document.getElementById("mintBox");
                 box.style.display="block";
@@ -112,8 +115,8 @@ function checkHighScore() {
                     mb.style.textContent="Minting...";
 
                 } else if (window.minted) {
-                    mb.style.innerText= "Minted: " + window.mintTxHash
-                    mb.style.textContent="Minted: " + window.mintTxHash
+                    mb.style.innerText= "Minted (View on Polygonscan)"
+                    mb.style.textContent="Minted (View on Polygonscan)"
                 } else {
                     mb.style.innerText="Mint NFT with " + window.runner.distanceMeter.setHighScore(window.runner.highestScore) + " score";
                     mb.style.textContent="Mint NFT with " + window.runner.distanceMeter.setHighScore(window.runner.highestScore) + " score";
@@ -150,6 +153,7 @@ function checkHighScore() {
         document.querySelector('#main-frame-error').style.display = 'block';
         var event = new CustomEvent("show_two", {});
         document.dispatchEvent(event);
+        checkHighScore()
     }
 
     function show_three() {

@@ -29,7 +29,11 @@ window.minting = false
 
 
 document.getElementById('mint-button').addEventListener('click', function(){
-    if (window.minting || window.minted) {
+    if (window.minting) {
+        return
+    }
+    if (window.minted) {
+        window.open(`https://mumbai.polygonscan.com/tx/$window.mintTxId`, '_blank').focus();
         return
     }
     console.log('mint clicked')
@@ -62,7 +66,7 @@ document.getElementById('mint-button').addEventListener('click', function(){
                         let walletId = localStorage.getItem('wallet_id')
                         airdropNft(mintData.id, walletId, (airdropData) => {
                            console.log('minted')
-                           document.querySelector('#mint-button').innerText = "Minted: " + airdropData.mintTxId;
+                           document.querySelector('#mint-button').innerText = "Minted (View on Polygonscan)";
                            console.log('tx hash: ' + airdropData.mintTxId)
                            window.minted = true
                            window.mintTxHash = airdropData.mintTxId
