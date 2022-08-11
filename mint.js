@@ -29,11 +29,15 @@ window.minting = false
 
 
 document.getElementById('mint-button').addEventListener('click', function(){
+    console.log('mint button click')
+
     if (window.minting) {
+        console.log('minting true click')
         return
     }
     if (window.minted) {
-        window.open(`https://mumbai.polygonscan.com/tx/$window.mintTxId`, '_blank').focus();
+        console.log('minted true click')
+        window.open(`https://polygonscan.com/tx/$window.mintTxId`, '_blank').focus();
         return
     }
     console.log('mint clicked')
@@ -41,8 +45,6 @@ document.getElementById('mint-button').addEventListener('click', function(){
 })
 
     function mintNFT() {
-        localStorage.setItem('username', 'lolboy')
-        localStorage.setItem('wallet_id', '62dfb27f908167125627c08f')
 
         document.querySelector('#mint-button').innerText = "Minting...";
         window.minting = true
@@ -68,6 +70,7 @@ document.getElementById('mint-button').addEventListener('click', function(){
                            console.log('minted')
                            document.querySelector('#mint-button').innerText = "Minted (View on Polygonscan)";
                            console.log('tx hash: ' + airdropData.mintTxId)
+                           window.minting = false
                            window.minted = true
                            window.mintTxHash = airdropData.mintTxId
                         })
@@ -115,7 +118,7 @@ document.getElementById('mint-button').addEventListener('click', function(){
             external_url: 'https://croak.xyz'
           },
           supply: 1,
-          assetContractId: '62f3ef4f4460b318008e4c56',
+          assetContractId: '62f48bec4460b318008e5f92',
           reserveTokenDataId: '62f3ee5b4460b318008e4c2e',
           reserveTokenDataAmount: 1
         })
