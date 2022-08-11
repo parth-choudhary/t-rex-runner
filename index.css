@@ -171,6 +171,7 @@ html, body {
   height: 100vh;
   left: 0px;
   pointer-events: none;
+  bottom: 0px;
 }
 
 #screen_one {
