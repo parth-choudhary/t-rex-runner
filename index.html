@@ -102,7 +102,6 @@ function startGame() {
 
 function checkHighScore() {
         setTimeout(() => {
-            console.log('herere', window.runner.highestScore)
             if(window.runner.highestScore > 0) {
                 var box = document.getElementById("mintBox");
                 box.style.display="block";
@@ -114,8 +113,8 @@ function checkHighScore() {
                     mb.style.textContent="Minting...";
 
                 } else if (window.minted) {
-                    mb.style.innerText= "Minted: " + window.mintTxHash
-                    mb.style.textContent="Minted: " + window.mintTxHash
+                    mb.style.innerText= "Minted (View on Polygonscan)"
+                    mb.style.textContent="Minted (View on Polygonscan)"
                 } else {
                     mb.style.innerText="Mint NFT with " + window.runner.distanceMeter.setHighScore(window.runner.highestScore) + " score";
                     mb.style.textContent="Mint NFT with " + window.runner.distanceMeter.setHighScore(window.runner.highestScore) + " score";
