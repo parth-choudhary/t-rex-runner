@@ -2747,9 +2747,14 @@
 
 
 
+var loaded = false;
 function onDocumentLoad() {
-    let runner = new Runner('.interstitial-wrapper');
-    window.runner = runner;
+    if(!loaded){
+        let runner = new Runner('.interstitial-wrapper');
+        window.runner = runner;
+        loaded = true;
+    }
+    
 }
 
 

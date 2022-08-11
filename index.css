@@ -204,3 +204,9 @@ button{
 #main-frame-error {
     display: none;
 }
+
+#login-image {
+    cursor: pointer;
+    pointer-events: auto;
+}
+

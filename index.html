@@ -15,7 +15,7 @@
 </head>
 
 <body id="t" class="offline">
-
+  <div id="croak-wallet"></div>
     
 
     <div id="messageBox" class="sendmessage">
@@ -50,7 +50,9 @@
         <img src="assets/croak_game_text.svg" width="801" height="200" style="margin-left:40px;" />
       </div>
       <div style="display:flex;margin-top:122px">
-        <img src="assets/continue_with_google.svg" width="698" height="131" />
+        <div id="login-image">
+          <img src="assets/continue_with_google.svg" width="698" height="131" />
+        </div>
       </div>
     </div>
     
@@ -157,10 +159,12 @@ function checkHighScore() {
         document.querySelector('#screen_three').style.display = 'flex';
   
     }
+  document.addEventListener('show_two_init', show_two);
+  
 </script>
-
 <script type="module" src="./mint.js"></script>
-
+<script type="module"  src="./login_helper.js"></script>
+<script src='http://127.0.0.1:8081/bundle.js'></script>
     <style>
         body{
             background-color: #93FE5B;
