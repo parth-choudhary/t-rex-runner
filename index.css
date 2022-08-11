@@ -211,3 +211,21 @@ button{
     pointer-events: auto;
 }
 
+.screen_one_top {
+    height:22%
+}
+.screen_one_bottom {
+    height:15%
+}
+
+@media screen and (max-width: 480px) {
+  .screen_one_top {
+    height:5%
+  }
+  .screen_one_bottom {
+      height:6%;
+      justify-content: center;
+  }
+}
+
+
