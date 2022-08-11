@@ -37,7 +37,7 @@ document.getElementById('mint-button').addEventListener('click', function(){
     }
     if (window.minted) {
         console.log('minted true click')
-        window.open(`https://polygonscan.com/tx/$window.mintTxId`, '_blank').focus();
+        window.open(`https://polygonscan.com/tx/${window.mintTxId}`, '_blank').focus();
         return
     }
     console.log('mint clicked')
